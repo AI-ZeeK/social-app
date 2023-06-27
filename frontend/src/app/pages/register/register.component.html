@@ -1,0 +1,141 @@
+<app-header></app-header>
+<main class="auth-block">
+  <div class="left-box">
+    <div class="welcome-head">
+      <h1>Welcome to Kitchen Stories!</h1>
+    </div>
+    <div class="welcome-box">
+      <div class="welcome-msg">
+        <app-svg-one></app-svg-one>
+        <p>Let yourself be inspired by numerous recipes & tips</p>
+      </div>
+      <div class="welcome-msg">
+        <app-svg-one></app-svg-one>
+        <p>Create your own cookbooks</p>
+      </div>
+      <div class="welcome-msg">
+        <app-svg-one></app-svg-one>
+        <p>hungry for more? Get the app!</p>
+      </div>
+    </div>
+
+    <div class="app-download">
+      <div class="store-badge">
+        <img src="../../../assets/app-store-badge.svg" alt="" />
+      </div>
+
+      <div class="store-badge">
+        <img src="../../../assets/google-play-badge.svg" alt="" />
+      </div>
+    </div>
+    <div class="sign">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="72"
+        height="108"
+        fill="none"
+        class="absolute -top-10 left-0 md:hidden text-green-cold-700"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-width="6"
+          d="M-87.926 9.064C-61.194 2.167-9.76-3.113-17.88 30.944c-10.15 42.57-41.88 60.224-52.9 47.987-10.901-12.104 50.546-85.16 81.666-68.397 31.12 16.762-6.142 111.082-27.607 90.689-12.928-12.281 17.06-39.17 85.507-45.01"
+        ></path>
+      </svg>
+    </div>
+    <div class="phone">
+      <img src="../../../assets/login/app-hand-phone.webp" alt="" />
+    </div>
+    <div class="hearts">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="82"
+        height="83"
+        fill="none"
+      >
+        <path
+          fill="currentColor"
+          stroke="#000"
+          stroke-linejoin="round"
+          stroke-width="1.363"
+          d="M9.235 11.643c12.794-9.64 25.87 6.738 28.656 14.153C45.908-8.2 77.942-1.916 80.805 17.808c2.864 19.724-26.7 47.4-42.557 64.491C16.972 58.38-12.485 28.01 9.235 11.643Z"
+        ></path>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="62"
+        height="70"
+        fill="none"
+        class="ml-auto"
+      >
+        <path
+          fill="currentColor"
+          stroke="#000"
+          stroke-linejoin="round"
+          stroke-width="1.363"
+          d="M58.033 21.36c-7.552-10.141-21.094-.635-24.85 4.364C34.653-1.81 8.991-4.158 2.445 10.149c-6.546 14.307 9.709 41.835 17.929 58.302 21.427-13.4 50.482-29.871 37.66-47.09Z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+  <div class="right-box">
+    <div class="auth-head">
+      <h2>Register</h2>
+    </div>
+    <div class="auth-change">
+      <a routerLink="/login">You an account yet? <span>Log In</span></a>
+    </div>
+    <div class="auth-options">
+      <div class="google auth-option">
+        <img src="../../../assets/icons8-google.svg" alt="" />
+      </div>
+      <div class="facebook auth-option">
+        <fa-icon [icon]="faFacebookF"></fa-icon>
+      </div>
+    </div>
+    <form class="auth-form">
+      <div class="form-control">
+        <label for="">User Name <span>*</span></label>
+        <div class="input-box">
+          <input required type="text" placeholder="Your Username" />
+        </div>
+      </div>
+      <div class="form-control">
+        <label for="">Email <span>*</span></label>
+        <div class="input-box">
+          <input required type="email" placeholder="Your Email" />
+        </div>
+      </div>
+      <div class="form-control">
+        <label for="">password <span>*</span></label>
+        <div class="input-box">
+          <input
+            required
+            placeholder="Your Password"
+            type="{{ isPasswordShow ? 'text' : 'password' }}"
+          />
+          <div class="show-icon" (click)="showPassword()">
+            <fa-icon *ngIf="isPasswordShow" [icon]="faEye"></fa-icon>
+            <fa-icon *ngIf="!isPasswordShow" [icon]="faEyeSlash"></fa-icon>
+          </div>
+        </div>
+      </div>
+      <div class="check-control">
+        <input type="checkbox" />
+        <p>
+          By registering, I accept the <a routerLink="">terms of use</a> and the
+          <a routerLink="">privacy policy</a>. <span>*</span>
+        </p>
+      </div>
+      <div class="check-control">
+        <input type="checkbox" />
+        <p>I love getting exclusive recipes, articles and tips in my inbox.</p>
+      </div>
+      <div class="form-btn">
+        <button class="btn">Send</button>
+      </div>
+    </form>
+  </div>
+</main>
+<app-footer></app-footer>

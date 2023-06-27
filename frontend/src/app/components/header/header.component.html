@@ -1,0 +1,507 @@
+<header>
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="logo-block">
+        <div class="menu-bar" (click)="handleToggleNav()">
+          <ng-container
+            *ngIf="openNav$ | async; then close; else bars"
+          ></ng-container>
+          <ng-template #bars>
+            <fa-icon [icon]="faBars"></fa-icon>
+          </ng-template>
+          <ng-template #close>
+            <fa-icon [icon]="faXmark"></fa-icon>
+          </ng-template>
+        </div>
+        <h1 (click)="toHome()">Kitchen stories</h1>
+      </div>
+      <ul class="nav-links" *ngIf="navData$ | async as navData">
+        <ng-container *ngFor="let navdata of navData">
+          <li class="nav-link" (mouseover)="handleSetLargeNavState(navdata)">
+            <!-- <li class="nav-link"> -->
+            {{ navdata.head }}
+          </li>
+        </ng-container>
+        <ng-container *ngFor="let navdata of navData">
+          <ng-container *ngIf="navdata.head === 'recipe' && navdata.state">
+            <div
+              class="subnav subnav-recipe {{
+                navdata.head === 'recipe' && navdata.state ? 'active ' : ''
+              }}"
+            >
+              <ul class="subnav-box">
+                <ng-container *ngFor="let subNav of navdata.subnav">
+                  <ul class="subnav-sublink">
+                    <h3>
+                      {{ subNav.head }}
+                    </h3>
+                    <ul>
+                      <li *ngFor="let sub of subNav.sublinks">
+                        {{ sub.head }}
+                      </li>
+                    </ul>
+                  </ul>
+                </ng-container>
+              </ul>
+              <div class="daily-recipe-box">
+                <div class="daily-recipe-head">
+                  <p>recipe of the week</p>
+                </div>
+                <div class="daily-recipe-image">
+                  <img
+                    src="../../../assets/image/A898-photo-final-2.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="daily-recipe-desc">
+                  <p>A great recipe for cooking leftovers!</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="navdata.head === 'stories' && navdata.state">
+            <div
+              class="subnav subnav-stories {{
+                navdata.head === 'stories' && navdata.state ? 'active ' : ''
+              }}"
+            >
+              <ul class="subnav-stories-box">
+                <ng-container *ngFor="let subNav of navdata.subnav">
+                  <ul class="subnav-stories-sublink">
+                    <p>
+                      {{ subNav.head }}
+                    </p>
+                    <div class="subnav-stories-image">
+                      <img src="{{ subNav.img }}" alt="" />
+                    </div>
+                    <p>
+                      {{ subNav.desc }}
+                    </p>
+                  </ul>
+                </ng-container>
+                <a href="" class="subnavlink">Read more stories</a>
+              </ul>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="navdata.head === 'videos'">
+            <div
+              class="subnav subnav-videos {{
+                navdata.head === 'videos' && navdata.state ? 'active ' : ''
+              }}"
+            >
+              <div>
+                <div class="subnav-videos-head">
+                  <p>kitchen tips</p>
+                </div>
+                <ul class="subnav-videos-box">
+                  <ng-container *ngFor="let subNav of navdata.subnav">
+                    <ul class="subnav-videos-sublink">
+                      <div class="subnav-videos-image">
+                        <img src="{{ subNav.img }}" alt="" />
+                      </div>
+                      <h3>
+                        {{ subNav.head }}
+                      </h3>
+                    </ul>
+                  </ng-container>
+                  <a href="" class="subnavlink">Read more stories</a>
+                </ul>
+              </div>
+              <div class="recipe-block">
+                <div class="videos-recipe-head">
+                  <p>recipe of the week</p>
+                </div>
+                <div class="videos-recipe-block">
+                  <div class="videos-recipe-box">
+                    <div class="videos-recipe-image">
+                      <img
+                        src="../../../assets/image/A898-photo-final-2.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="videos-recipe-desc">
+                      <p>A great recipe for cooking leftovers!</p>
+                    </div>
+                  </div>
+                  <div class="videos-recipe-box">
+                    <div class="videos-recipe-image">
+                      <img
+                        src="../../../assets/image/A898-photo-final-2.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="videos-recipe-desc">
+                      <p>A great recipe for cooking leftovers!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="navdata.head === 'community' && navdata.state">
+            <div
+              class="subnav subnav-community {{
+                navdata.head === 'community' && navdata.state ? 'active ' : ''
+              }}"
+            >
+              <div class="community-box">
+                <div class="subnav-community-head">
+                  <p>kitchen tips</p>
+                </div>
+                <div class="subnav-community-links">
+                  <ng-container *ngFor="let subNav of navdata.subnav">
+                    <li
+                      class="subnav-community-link"
+                      (click)="handleSetSubNavState({navdata,subNav })"
+                    >
+                      <div class="subnav-community-top">
+                        <div class="community-link-image">
+                          <img src="{{ subNav.img }}" alt="" />
+                        </div>
+                        <span class="community-link-head">
+                          {{ subNav.head }}
+                        </span>
+                      </div>
+                      <div class="subnav-community-bottom">
+                        <div class="chef-profile-image">
+                          <img src="{{ subNav.chefimg }}" alt="" />
+                        </div>
+                        <div class="chef-profile-name">
+                          <span> {{ subNav.chefname }} </span>
+                          <span> {{ subNav.postdate }} </span>
+                        </div>
+                      </div>
+                    </li>
+                  </ng-container>
+                </div>
+                <a href="" class="subnavlink">Read more stories</a>
+              </div>
+              <div class="community-block">
+                <div class="community-recipe-head">
+                  <p>Create your own recipe</p>
+                </div>
+                <div class="community-recipe-block">
+                  <div class="community-recipe-box">
+                    <div class="community-recipe-image">
+                      <img
+                        src="../../../assets/image/A898-photo-final-2.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="community-recipe-desc">
+                      <p>A great recipe for cooking leftovers!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <div class="search-block">
+        <div class="search-box">
+          <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+          <p>search recipes</p>
+        </div>
+      </div>
+      <div class="auth-block {{ scrollPos ? '' : 'scroll' }}">
+        <button (click)="toLogin()" class="btn btn-outline">Login</button>
+        <button (click)="toRegister()" class="btn btn-fill">Register</button>
+      </div>
+    </div>
+    <div class="{{ (openNav$ | async) ? 'active' : '' }} sidenav">
+      <div class="auth-block btn-box">
+        <button (click)="toLogin()" class="btn btn-outline">Login</button>
+        <button (click)="toRegister()" class="btn btn-fill">Register</button>
+      </div>
+      <div class="line-through"></div>
+
+      <ul class="sidenav-links" *ngIf="navData$ | async as navData">
+        <ng-container *ngFor="let navdata of navData">
+          <li class="sidenav-link" (click)="handleSetNavState(navdata)">
+            <span>
+              {{ navdata.head }}
+            </span>
+
+            <span>
+              <fa-icon *ngIf="!navdata.state" [icon]="faChevronDown"></fa-icon>
+              <fa-icon *ngIf="navdata.state" [icon]="faChevronUp"></fa-icon>
+            </span>
+          </li>
+          <!-- <ng-container *ngIf=""> -->
+          <ul
+            class="sidenav-sublinks {{
+              navdata.head === 'recipe' && navdata.state ? 'active ' : ''
+            }}"
+          >
+            <ng-container *ngFor="let subNav of navdata.subnav">
+              <li
+                class="sidenav-sublink"
+                (click)="handleSetSubNavState({navdata,subNav })"
+              >
+                <span class="">
+                  {{ subNav.head }}
+                </span>
+                <span>
+                  <fa-icon
+                    *ngIf="!subNav.state"
+                    [icon]="faChevronDown"
+                  ></fa-icon>
+                  <fa-icon *ngIf="subNav.state" [icon]="faChevronUp"></fa-icon>
+                </span>
+              </li>
+              <ul class="sub-sublinks {{ subNav.state ? 'active' : '' }}">
+                <li class="sub-sublink" *ngFor="let sub of subNav.sublinks">
+                  {{ sub.head }}
+                </li>
+              </ul>
+            </ng-container>
+          </ul>
+          <ul
+            class="sidenav-sublinks  {{
+              navdata.head === 'stories' && navdata.state ? 'active ' : ''
+            }}"
+          >
+            <div class="sidenav-stories-links">
+              <ng-container *ngFor="let subNav of navdata.subnav">
+                <li
+                  class="sidenav-stories-link"
+                  (click)="handleSetSubNavState({navdata,subNav })"
+                >
+                  <span class="stories-link-head">
+                    {{ subNav.head }}
+                  </span>
+                  <div class="stories-link-image">
+                    <img src="{{ subNav.img }}" alt="" />
+                  </div>
+                  <span class="stories-link-desc">
+                    {{ subNav.desc }}
+                  </span>
+                </li>
+              </ng-container>
+            </div>
+
+            <a href="" class="subnavlink">Read more stories</a>
+          </ul>
+          <ul
+            class="sidenav-sublinks  {{
+              navdata.head === 'videos' && navdata.state ? 'active ' : ''
+            }}"
+          >
+            <div class="sidenav-video-links">
+              <ng-container *ngFor="let subNav of navdata.subnav">
+                <li
+                  class="sidenav-video-link"
+                  (click)="handleSetSubNavState({navdata,subNav })"
+                >
+                  <div class="video-link-image">
+                    <img src="{{ subNav.img }}" alt="" />
+                  </div>
+                  <span class="video-link-head">
+                    {{ subNav.head }}
+                  </span>
+                </li>
+              </ng-container>
+            </div>
+
+            <a href="" class="subnavlink">Show all kitchen tips</a>
+          </ul>
+          <ul
+            class="sidenav-sublinks  {{
+              navdata.head === 'community' && navdata.state ? 'active ' : ''
+            }}"
+          >
+            <div class="sidenav-community-links">
+              <ng-container *ngFor="let subNav of navdata.subnav">
+                <li
+                  class="sidenav-community-link"
+                  (click)="handleSetSubNavState({navdata,subNav })"
+                >
+                  <div class="sidenav-community-top">
+                    <div class="community-link-image">
+                      <img src="{{ subNav.img }}" alt="" />
+                    </div>
+                    <span class="community-link-head">
+                      {{ subNav.head }}
+                    </span>
+                  </div>
+                  <div class="sidenav-community-bottom">
+                    <div class="chef-profile-image">
+                      <img src="{{ subNav.chefimg }}" alt="" />
+                    </div>
+                    <div class="chef-profile-name">
+                      <span> {{ subNav.chefname }} </span>
+                      <span> {{ subNav.postdate }} </span>
+                    </div>
+                  </div>
+                </li>
+              </ng-container>
+            </div>
+
+            <a href="" class="subnavlink">Show all community recipes</a>
+          </ul>
+          <!-- </ng-container> -->
+          <div class="line-through"></div>
+        </ng-container>
+      </ul>
+    </div>
+  </nav>
+  <nav class="mobile-navbar">
+    <div class="header-top {{ scrollPos ? 'scrollup' : '' }}">
+      <h1 (click)="toHome()">Kitchen stories</h1>
+
+      <div class="auth-block">
+        <button (click)="toRegister()" class="btn btn-fill">Register</button>
+      </div>
+    </div>
+    <div class="header-bottom">
+      <div class="menu-bar" (click)="handleToggleNav()">
+        <fa-icon [icon]="faBars"></fa-icon>
+      </div>
+      <div class="search-box">
+        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+        <p>search recipes</p>
+      </div>
+    </div>
+    <div class="{{ (openNav$ | async) ? 'active' : '' }} sidenav">
+      <div class="menu-bar" (click)="handleToggleNav()">
+        <fa-icon [icon]="faXmark"></fa-icon>
+      </div>
+      <div class="auth-block btn-box">
+        <button (click)="toLogin()" class="btn btn-outline">Login</button>
+        <button (click)="toRegister()" class="btn btn-fill">Register</button>
+      </div>
+      <div class="line-through"></div>
+      <ul class="sidenav-links" *ngIf="navData$ | async as navData">
+        <ng-container *ngFor="let navdata of navData">
+          <li class="sidenav-link" (click)="handleSetNavState(navdata)">
+            <span>
+              {{ navdata.head }}
+            </span>
+
+            <span>
+              <fa-icon *ngIf="!navdata.state" [icon]="faChevronDown"></fa-icon>
+              <fa-icon *ngIf="navdata.state" [icon]="faChevronUp"></fa-icon>
+            </span>
+          </li>
+          <!-- <ng-container *ngIf=""> -->
+          <ul
+            class="sidenav-sublinks {{
+              navdata.head === 'recipe' && navdata.state ? 'active ' : ''
+            }}"
+          >
+            <ng-container *ngFor="let subNav of navdata.subnav">
+              <li
+                class="sidenav-sublink"
+                (click)="handleSetSubNavState({navdata,subNav })"
+              >
+                <span class="">
+                  {{ subNav.head }}
+                </span>
+                <span>
+                  <fa-icon
+                    *ngIf="!subNav.state"
+                    [icon]="faChevronDown"
+                  ></fa-icon>
+                  <fa-icon *ngIf="subNav.state" [icon]="faChevronUp"></fa-icon>
+                </span>
+              </li>
+              <ul class="sub-sublinks {{ subNav.state ? 'active' : '' }}">
+                <li class="sub-sublink" *ngFor="let sub of subNav.sublinks">
+                  {{ sub.head }}
+                </li>
+              </ul>
+            </ng-container>
+          </ul>
+          <ul
+            class="sidenav-sublinks  {{
+              navdata.head === 'stories' && navdata.state ? 'active ' : ''
+            }}"
+          >
+            <div class="sidenav-stories-links">
+              <ng-container *ngFor="let subNav of navdata.subnav">
+                <li
+                  class="sidenav-stories-link"
+                  (click)="handleSetSubNavState({navdata,subNav })"
+                >
+                  <span class="stories-link-head">
+                    {{ subNav.head }}
+                  </span>
+                  <div class="stories-link-image">
+                    <img src="{{ subNav.img }}" alt="" />
+                  </div>
+                  <span class="stories-link-desc">
+                    {{ subNav.desc }}
+                  </span>
+                </li>
+              </ng-container>
+            </div>
+
+            <a href="" class="subnavlink">Read more stories</a>
+          </ul>
+          <ul
+            class="sidenav-sublinks  {{
+              navdata.head === 'videos' && navdata.state ? 'active ' : ''
+            }}"
+          >
+            <div class="sidenav-video-links">
+              <ng-container *ngFor="let subNav of navdata.subnav">
+                <li
+                  class="sidenav-video-link"
+                  (click)="handleSetSubNavState({navdata,subNav })"
+                >
+                  <div class="video-link-image">
+                    <img src="{{ subNav.img }}" alt="" />
+                  </div>
+                  <span class="video-link-head">
+                    {{ subNav.head }}
+                  </span>
+                </li>
+              </ng-container>
+            </div>
+
+            <a href="" class="subnavlink">Show all kitchen tips</a>
+          </ul>
+          <ul
+            class="sidenav-sublinks  {{
+              navdata.head === 'community' && navdata.state ? 'active ' : ''
+            }}"
+          >
+            <div class="sidenav-community-links">
+              <ng-container *ngFor="let subNav of navdata.subnav">
+                <li
+                  class="sidenav-community-link"
+                  (click)="handleSetSubNavState({navdata,subNav })"
+                >
+                  <div class="sidenav-community-top">
+                    <div class="community-link-image">
+                      <img src="{{ subNav.img }}" alt="" />
+                    </div>
+                    <span class="community-link-head">
+                      {{ subNav.head }}
+                    </span>
+                  </div>
+                  <div class="sidenav-community-bottom">
+                    <div class="chef-profile-image">
+                      <img src="{{ subNav.chefimg }}" alt="" />
+                    </div>
+                    <div class="chef-profile-name">
+                      <span> {{ subNav.chefname }} </span>
+                      <span> {{ subNav.postdate }} </span>
+                    </div>
+                  </div>
+                </li>
+              </ng-container>
+            </div>
+
+            <a href="" class="subnavlink">Show all community recipes</a>
+          </ul>
+          <!-- </ng-container> -->
+          <div class="line-through"></div>
+        </ng-container>
+      </ul>
+    </div>
+  </nav>
+</header>

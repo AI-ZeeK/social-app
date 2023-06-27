@@ -1,0 +1,187 @@
+<!-- Your component content here -->
+<app-header></app-header>
+
+<div id="body">
+  <section class="banner-block">
+    <div class="banner-image">
+      <img src="../../../assets/image/A898-photo-final-2.jpg" alt="" />
+    </div>
+    <div class="banner-details">
+      <small class="detail-head">Barbecue SEAson</small>
+      <h3>
+        Everything you need to know about barbecue marinades & Co. this summer
+      </h3>
+      <div class="detail-bottom">
+        <span class="detail-name">Ruby Goss</span>.
+        <span> at kitchen Stories </span>
+      </div>
+      <div>
+        <span><fa-icon [icon]="faHeart"></fa-icon> </span>
+        <span> 1.9k </span>
+      </div>
+    </div>
+  </section>
+  <section class="recipe-search-block">
+    <div class="recipe-head">
+      <p>Find recipes and more</p>
+    </div>
+    <div class="recipe-search">
+      <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+      <input type="text" placeholder="what would you like to cook" />
+    </div>
+    <div class="advanced-search-box">
+      <div class="search-options">
+        <a routerLink="/" class="advanced-search search-option">
+          <p>Main course</p>
+          <fa-icon [icon]="faChevronRight"></fa-icon>
+        </a>
+        <a routerLink="/" class="advanced-search search-option">
+          <p>Fast</p>
+          <fa-icon [icon]="faChevronRight"></fa-icon>
+        </a>
+        <a routerLink="/" class="advanced-search search-option">
+          <p>Dessert</p>
+          <fa-icon [icon]="faChevronRight"></fa-icon>
+        </a>
+        <a routerLink="/" class="advanced-search search-option">
+          <p>Pasta</p>
+          <fa-icon [icon]="faChevronRight"></fa-icon>
+        </a>
+      </div>
+      <a routerLink="/" class="advanced-search">
+        <p>ADVANCED SEARCH</p>
+        <fa-icon [icon]="faChevronRight"></fa-icon>
+      </a>
+    </div>
+  </section>
+  <section class="spice-poster">
+    <div class="poster-head">
+      <h2>Find recipes and more</h2>
+    </div>
+    <div class="poster-image">
+      <img src="../../../assets/image/newsletter-outgoing.jpg" alt="" />
+    </div>
+  </section>
+  <section class="profile-block">
+    <div class="profile-head">
+      <h2>more from</h2>
+    </div>
+    <div class="profile-box">
+      <div class="profile-details" *ngFor="let chefProfile of chefProfiles">
+        <div class="profile-image">
+          <img src="{{ chefProfile.img }}" alt="" />
+        </div>
+        <div class="profile-name">
+          <p>
+            {{ chefProfile.name }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="food-mix-block">
+    <div class="food-mix-head">
+      <h2>
+        Our AVOCADO DREAMS spice mix doesn't just go well with avocado toast
+      </h2>
+    </div>
+    <div class="food-mix-box">
+      <div class="food-mix-details">
+        <div
+          class="food-mix-image"
+          data-test="global-video-player-video"
+          style="width: 100%; height: 100%"
+        >
+          <video
+            preload="auto"
+            autoplay=""
+            class="img"
+            controls=""
+            style="width: 100%; height: 100%"
+            src="blob:https://www.kitchenstories.com/5921a4e3-90a1-4742-a714-a0f28b780763"
+          ></video>
+          <div class="timing-details">
+            <div class="details-box">
+              <p>20 min.</p>
+            </div>
+            <div class="details-box">
+              <p>Vegan</p>
+            </div>
+          </div>
+          <div class="rating-details">
+            <span> <fa-icon [icon]="faHeart"></fa-icon> </span>
+            <span>13.1k</span>
+          </div>
+        </div>
+      </div>
+      <div class="food-mix-details">
+        <div
+          class="food-mix-image"
+          data-test="global-video-player-video"
+          style="width: 100%; height: 100%"
+        >
+          <img
+            src="https://images.services.kitchenstories.io/r-9Su4WGBo9C3F_g-Wyh0kewnAM=/750x0/filters:quality(85)/images.kitchenstories.io/recipeImages/16_09_stuffedBakedSweetPotato_Final.jpg"
+            alt=""
+          />
+          <div class="timing-details">
+            <div class="details-box">
+              <p>20 min.</p>
+            </div>
+            <div class="details-box">
+              <p>Vegan</p>
+            </div>
+          </div>
+          <div class="rating-details">
+            <span> <fa-icon [icon]="faHeart"></fa-icon> </span>
+            <span>13.1k</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="daily-recipe-block">
+    <div class="daily-recipe-head">
+      <h2>Recipe of the day</h2>
+    </div>
+    <div class="daily-recipe-box">
+      <div
+        class="daily-recipe-details"
+        data-test="global-video-player-video"
+        style="width: 100%; height: 100%"
+      >
+        <div class="daily-recipe-image">
+          <img
+            src="https://images.services.kitchenstories.io/AgijNSLUavxhZl9TCeHfpg4-nJM=/750x0/filters:quality(85)/images.kitchenstories.io/wagtailOriginalImages/R2924-final-photos-1.jpg"
+            alt=""
+          />
+          <div class="timing-details">
+            <div class="details-box">
+              <p>20 min.</p>
+            </div>
+            <div class="details-box">
+              <p>Vegan</p>
+            </div>
+          </div>
+          <div class="rating-details">
+            <span> <fa-icon [icon]="faHeart"></fa-icon> </span>
+            <span>13.1k</span>
+          </div>
+        </div>
+      </div>
+      <div class="dish-box">
+        <p>Spicy zucchini corn fritters with herb</p>
+      </div>
+      <div class="chef-profile">
+        <div class="chef-image">
+          <img
+            src="https://images.services.kitchenstories.io/YnfP7-_2BS9fg9nUFXn1kQChpbQ=/32x0/filters:quality(80)/images.kitchenstories.io/userImages/IMG_20230405_105707_2a10454f.jpg"
+            alt=""
+          />
+        </div>
+        <p>Marco Hartz</p>
+      </div>
+    </div>
+  </section>
+</div>
+<app-footer id="body"></app-footer>
