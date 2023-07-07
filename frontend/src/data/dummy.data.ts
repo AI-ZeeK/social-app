@@ -1,4 +1,4 @@
-import { NavType } from 'src/app/store/auth.actions';
+import { NavType } from './Typesdata';
 
 export const navData: NavType[] = [
   {
@@ -476,5 +476,26 @@ export const chefProfiles = [
   {
     img: 'https://images.services.kitchenstories.io/0oojNSyp85lvDf1To7LxDUynHhI=/256x0/filters:quality(80)/images.kitchenstories.io/userImages/Logo_Getir_5aae46f9.jpeg',
     name: 'can',
+  },
+];
+
+export const profOptionsNav = [
+  {
+    id: 'YIOD899GH',
+    icon: 'faBookmark',
+    head: 'COOKBOOKS',
+    state: true,
+  },
+  {
+    id: 'PKLD88SB',
+    icon: 'faBook',
+    head: 'RECIPES',
+    state: false,
+  },
+  {
+    id: 'QPSH78IS',
+    icon: 'faHeart',
+    head: 'I LIKE',
+    state: false,
   },
 ];

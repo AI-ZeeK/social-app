@@ -3,10 +3,11 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import {
   faChevronRight,
   faMagnifyingGlass,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { AppState, CloseNav, NavType } from 'src/app/store/auth.actions';
+import { AppState, CloseNav } from 'src/app/store/auth.actions';
 
 import { chefProfiles } from 'src/data/dummy.data';
 
@@ -17,6 +18,7 @@ import { chefProfiles } from 'src/data/dummy.data';
 })
 export class HomeComponent {
   faHeart = faHeart;
+  faXmark = faXmark;
   faMagnifyingGlass = faMagnifyingGlass;
   faChevronRight = faChevronRight;
   chefProfiles = chefProfiles;

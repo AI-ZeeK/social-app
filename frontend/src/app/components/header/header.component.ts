@@ -12,13 +12,15 @@ import { Observable } from 'rxjs';
 import {
   AppState,
   CloseNav,
-  NavType,
+  OpenModal,
   SetLargeNavState,
   SetNavState,
+  SetOptionNavState,
   SetSubNavState,
   ToggleNav,
 } from 'src/app/store/auth.actions';
 import { Router } from '@angular/router';
+import { NavType, ProfOptionsNav } from 'src/data/Typesdata';
 
 @Component({
   selector: 'app-header',
@@ -33,6 +35,8 @@ export class HeaderComponent {
   faChevronDown = faChevronDown;
   previousScrollPosition = window.pageYOffset;
   scrollPos: boolean = true;
+  profileDropDown: boolean = false;
+  paid: string = 'Isaac Tubonibo Iyaye-Williams';
   scrollThreshold: number = 100; // Adjust the threshold value as needed
 
   openNav: boolean = false;
@@ -42,15 +46,30 @@ export class HeaderComponent {
     private elementRef: ElementRef,
     private router: Router
   ) {}
-
+  @Select(AppState.getProfOptionsNavState) profOptionsNav$!: Observable<
+    ProfOptionsNav[]
+  >;
   @Select(AppState.getNavData) navData$!: Observable<NavType[]>;
   @Select(AppState.getNavState) openNav$!: Observable<boolean>;
 
   handleToggleNav() {
     this.store.dispatch(new ToggleNav());
   }
+  handleOpenProfileNav() {
+    this.profileDropDown = !this.profileDropDown;
+  }
+  handleToEdit() {
+    this.router.navigate(['profile/edit']);
+  }
+  handleSetOptionsNav(e: any) {
+    this.router.navigate(['profile']);
+    this.store.dispatch(new SetOptionNavState(e));
+  }
   handleSetNavState(payload: any) {
     this.store.dispatch(new SetNavState(payload));
+  }
+  handleOpenModal() {
+    this.store.dispatch(new OpenModal());
   }
   handleSetSubNavState(payload: any) {
     this.store.dispatch(new SetSubNavState(payload));
@@ -80,11 +99,11 @@ export class HeaderComponent {
     ) {
       if (currentScrollPosition > this.previousScrollPosition) {
         // Scrolling down
-        console.log('Scrolling down', currentScrollPosition);
+        // console.log('Scrolling down', currentScrollPosition);
         this.scrollPos = false;
       } else {
         // Scrolling up
-        console.log('Scrolling up', currentScrollPosition);
+        // console.log('Scrolling up', currentScrollPosition);
         this.scrollPos = true;
       }
       this.previousScrollPosition = currentScrollPosition;
@@ -106,5 +125,9 @@ export class HeaderComponent {
         // Perform any additional actions here
       }
     }
+  }
+
+  handleChangeToHome() {
+    this.router.navigate(['profile']);
   }
 }

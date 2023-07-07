@@ -4,26 +4,8 @@ import { tap } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { navData } from 'src/data/dummy.data';
-
-export interface SubNavType {
-  id: string;
-  head: string;
-  state?: boolean;
-  sublinks?: any;
-  img?: string;
-  desc?: string;
-  link?: string;
-  chefimg?: string;
-  chefname?: string;
-  postdate?: string;
-}
-export interface NavType {
-  id: string;
-  head: string;
-  state: boolean;
-  subnav: SubNavType[];
-}
+import { navData, profOptionsNav } from 'src/data/dummy.data';
+import { NavType, ProfOptionsNav } from 'src/data/Typesdata';
 
 export class ToggleNav {
   static readonly type = '[Nav] toggle nav';
@@ -31,8 +13,18 @@ export class ToggleNav {
 export class CloseNav {
   static readonly type = '[Nav] close nav';
 }
+export class CloseModal {
+  static readonly type = '[MODAL] close modal';
+}
+export class OpenModal {
+  static readonly type = '[MODAL] open modal';
+}
 export class SetNavState {
   static readonly type = '[NAV] Open Nav';
+  constructor(public payload: any) {}
+}
+export class SetOptionNavState {
+  static readonly type = '[OPTIONS nav] toggle Nav';
   constructor(public payload: any) {}
 }
 export class SetSubNavState {
@@ -47,6 +39,8 @@ export class SetLargeNavState {
 interface AppInitial {
   navData: NavType[];
   openNav: boolean;
+  isModalOpen: boolean;
+  profOptionsNav: ProfOptionsNav[];
 }
 
 @State<AppInitial>({
@@ -54,6 +48,8 @@ interface AppInitial {
   defaults: {
     navData: [...navData],
     openNav: false,
+    isModalOpen: false,
+    profOptionsNav: [...profOptionsNav],
   },
 })
 @Injectable()
@@ -68,6 +64,14 @@ export class AppState {
   static getNavState(state: AppInitial): boolean {
     return state.openNav;
   }
+  @Selector()
+  static getModalState(state: AppInitial): boolean {
+    return state.isModalOpen;
+  }
+  @Selector()
+  static getProfOptionsNavState(state: AppInitial): ProfOptionsNav[] {
+    return state.profOptionsNav;
+  }
 
   @Action(ToggleNav)
   closeNav(ctx: StateContext<AppInitial>) {
@@ -81,6 +85,18 @@ export class AppState {
     let state = ctx.getState();
     ctx.patchState({
       openNav: false,
+    });
+  }
+  @Action(CloseModal)
+  closeModal({ patchState }: StateContext<AppInitial>) {
+    patchState({
+      isModalOpen: false,
+    });
+  }
+  @Action(OpenModal)
+  openModal({ patchState }: StateContext<AppInitial>) {
+    patchState({
+      isModalOpen: true,
     });
   }
   @Action(SetNavState)
@@ -99,6 +115,23 @@ export class AppState {
               subnav: nav.subnav.map((sub: any) => {
                 return { ...sub, state: false };
               }),
+            };
+      }),
+    });
+  }
+  @Action(SetOptionNavState)
+  setProfOptionsNavState(ctx: StateContext<AppInitial>, { payload }: any) {
+    let state = ctx.getState();
+    ctx.patchState({
+      profOptionsNav: state.profOptionsNav.map((nav) => {
+        return payload.id === nav.id
+          ? {
+              ...nav,
+              state: true,
+            }
+          : {
+              ...nav,
+              state: false,
             };
       }),
     });

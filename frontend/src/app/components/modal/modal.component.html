@@ -1,0 +1,66 @@
+<section class="modal-overlay  {{ (isModalOpen$ | async) ? 'active' : '' }}">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="input-box">
+        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+        <input type="text" placeholder="What would you like to cook" />
+      </div>
+      <div (click)="handleCloseModal()">
+        <p>close</p>
+      </div>
+    </div>
+    <div class="categories">
+      <h4>Categories</h4>
+      <div class="categories-block">
+        <div class="categories-box">
+          <div>
+            <img src="../../../assets/modal/pasta.svg" alt="pasta" />
+          </div>
+          <div class="">
+            <p>Pasta</p>
+          </div>
+        </div>
+        <div class="categories-box">
+          <div>
+            <img src="../../../assets/modal/main.svg" alt="main" />
+          </div>
+          <div class="">
+            <p>main course</p>
+          </div>
+        </div>
+        <div class="categories-box">
+          <div>
+            <img src="../../../assets/modal/asian.svg" alt="asian" />
+          </div>
+          <div class="">
+            <p>Asian</p>
+          </div>
+        </div>
+        <div class="categories-box">
+          <div>
+            <img src="../../../assets/modal/quick.svg" alt="fast" />
+          </div>
+          <div class="">
+            <p>Fast</p>
+          </div>
+        </div>
+        <div class="categories-box">
+          <div>
+            <img src="../../../assets/modal/meatless.svg" alt="meatless" />
+          </div>
+          <div class="">
+            <p>meatless</p>
+          </div>
+        </div>
+        <div class="categories-box">
+          <div>
+            <img src="../../../assets/modal/dessert.svg" alt="dessert" />
+          </div>
+          <div class="">
+            <p>dessert</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

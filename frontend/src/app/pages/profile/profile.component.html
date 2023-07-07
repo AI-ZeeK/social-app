@@ -1,0 +1,115 @@
+<app-header></app-header>
+
+<main class="profile-block">
+  <div class="profile-box">
+    <div class="profile-image">
+      <span>
+        {{ paid.slice(0, 1) }}
+      </span>
+    </div>
+    <div class="name-box">
+      <p>{{ paid }}</p>
+    </div>
+    <div class="gear" (click)="handleToEdit()">
+      <fa-icon [icon]="faGear"></fa-icon>
+      <p>Ideas</p>
+    </div>
+  </div>
+  <div class="line-through"></div>
+  <nav class="options-nav" *ngIf="profOptionsNav$ | async as profOptionsNav">
+    <div
+      class="nav-item {{ profOptions.state ? 'active' : '' }}"
+      *ngFor="let profOptions of profOptionsNav"
+      (click)="handleSetOptionsNav(profOptions)"
+    >
+      <fa-icon *ngIf="profOptions.icon === 'faBook'" [icon]="faBook"></fa-icon>
+      <fa-icon
+        *ngIf="profOptions.icon === 'faBookmark'"
+        [icon]="faBookmark"
+      ></fa-icon>
+      <fa-icon
+        *ngIf="profOptions.icon === 'faHeart'"
+        [icon]="faHeart"
+      ></fa-icon>
+      <p>{{ profOptions.head }}</p>
+    </div>
+    <!-- <div class="nav-item">
+      <fa-icon [icon]="faBook"></fa-icon>
+      <p>Recipes</p>
+    </div>
+    <div class="nav-item">
+      <fa-icon [icon]="faHeart"></fa-icon>
+      <p>I like</p>
+    </div> -->
+  </nav>
+  <div class="line-through"></div>
+  <section class="options">
+    <ng-container *ngIf="profOptionsNav$ | async as profOptionsNav">
+      <ng-container *ngFor="let profOptions of profOptionsNav">
+        <div
+          *ngIf="profOptions.head === 'COOKBOOKS' && profOptions.state"
+          class="card-block"
+        >
+          <div class="new-card">
+            <fa-icon [icon]="faPlus"></fa-icon>
+            <p>Create a new cookbook</p>
+          </div>
+          <div class="block-details">
+            <h2>You have not yet created your own cookbooks.</h2>
+            <p>Create cookbooks to collect your favorite recipes.</p>
+          </div>
+        </div>
+        <div
+          *ngIf="profOptions.head === 'RECIPES' && profOptions.state"
+          class="card-block"
+        >
+          <div>
+            <img src="../../../assets/profile/recipe-state.webp" alt="" />
+          </div>
+          <div class="block-details">
+            <h2>
+              Would you like to publish your own recipes on Kitchen Stories?
+            </h2>
+            <p>
+              Now is the right time! Click below to upload your recipe and share
+              it with the community!
+            </p>
+          </div>
+          <div class="btn-box">
+            <button>Share your first recipe</button>
+          </div>
+        </div>
+        <div
+          *ngIf="profOptions.head === 'I LIKE' && profOptions.state"
+          class="card-block"
+        >
+          <div>
+            <img src="../../../assets/profile/empty-likes.webp" alt="" />
+          </div>
+          <div class="block-details">
+            <h2>Hey! You haven't distributed any hearts yet!</h2>
+            <p>
+              Do you like an article or recipe? Then tap on the heart icon. We
+              save all your favorite treats here for you.
+            </p>
+          </div>
+          <div class="btn-box">
+            <button>Find recipes and more</button>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <!-- <div class="card-block">
+      <div class="new-card">
+        <fa-icon [icon]="faPlus"></fa-icon>
+        <p>Create a new cookbook</p>
+      </div>
+      <div class="block-details">
+        <h2>You have not yet created your own cookbooks.</h2>
+        <p>Create cookbooks to collect your favorite recipes.</p>
+      </div>
+    </div> -->
+  </section>
+</main>
+<app-footer></app-footer>

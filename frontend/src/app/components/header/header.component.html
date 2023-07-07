@@ -17,7 +17,8 @@
       </div>
       <ul class="nav-links" *ngIf="navData$ | async as navData">
         <ng-container *ngFor="let navdata of navData">
-          <li class="nav-link" (mouseover)="handleSetLargeNavState(navdata)">
+          <li class="nav-link">
+            <!-- (mouseover)="handleSetLargeNavState(navdata)" -->
             <!-- <li class="nav-link"> -->
             {{ navdata.head }}
           </li>
@@ -201,14 +202,23 @@
     </div>
     <div class="nav-right">
       <div class="search-block">
-        <div class="search-box">
+        <div class="search-box" (click)="handleOpenModal()">
           <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
           <p>search recipes</p>
         </div>
       </div>
       <div class="auth-block {{ scrollPos ? '' : 'scroll' }}">
-        <button (click)="toLogin()" class="btn btn-outline">Login</button>
-        <button (click)="toRegister()" class="btn btn-fill">Register</button>
+        <!-- <button (click)="toLogin()" class="btn btn-outline">Login</button>
+        <button (click)="toRegister()" class="btn btn-fill">Register</button> -->
+        <div class="profile-image" (click)="handleChangeToHome()">
+          <span>
+            {{ paid.slice(0, 1) }}
+          </span>
+        </div>
+        <fa-icon
+          (click)="handleOpenProfileNav()"
+          [icon]="faChevronDown"
+        ></fa-icon>
       </div>
     </div>
     <div class="{{ (openNav$ | async) ? 'active' : '' }} sidenav">
@@ -353,14 +363,23 @@
       <h1 (click)="toHome()">Kitchen stories</h1>
 
       <div class="auth-block">
-        <button (click)="toRegister()" class="btn btn-fill">Register</button>
+        <!-- <button (click)="toRegister()" class="btn btn-fill">Register</button> -->
+        <div class="profile-image" (click)="handleChangeToHome()">
+          <span>
+            {{ paid.slice(0, 1) }}
+          </span>
+        </div>
+        <fa-icon
+          (click)="handleOpenProfileNav()"
+          [icon]="faChevronDown"
+        ></fa-icon>
       </div>
     </div>
     <div class="header-bottom">
       <div class="menu-bar" (click)="handleToggleNav()">
         <fa-icon [icon]="faBars"></fa-icon>
       </div>
-      <div class="search-box">
+      <div class="search-box" (click)="handleOpenModal()">
         <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
         <p>search recipes</p>
       </div>
@@ -505,3 +524,21 @@
     </div>
   </nav>
 </header>
+
+<app-modal></app-modal>
+
+<nav
+  class="profile-options-nav {{ profileDropDown ? 'active' : '' }}"
+  *ngIf="profOptionsNav$ | async as profOptionsNav"
+>
+  <div
+    class="option"
+    (click)="handleSetOptionsNav(profOptions)"
+    *ngFor="let profOptions of profOptionsNav"
+  >
+    {{ profOptions.head }}
+  </div>
+  <div class="line-through"></div>
+  <div class="option" (click)="handleToEdit()">ideas</div>
+  <div class="option">logout</div>
+</nav>

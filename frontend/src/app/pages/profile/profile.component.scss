@@ -1,0 +1,195 @@
+@use "../../../abstracts/media-query" as *;
+@use "../../../abstracts/mixins" as *;
+
+.profile-block {
+  //   padding: 1rem;
+
+  .profile-box {
+    @include flex-col-center;
+    padding: 1rem;
+    height: 18rem;
+    gap: 0.4rem;
+    position: relative;
+    .profile-image {
+      height: 10rem;
+      width: 10rem;
+      min-width: 10rem;
+      @include flex-row-center;
+      background: #eaeaea;
+      border-radius: 50%;
+      overflow: hidden;
+      span {
+        font-size: 2.8rem;
+      }
+    }
+    .gear {
+      @include flex-row-center;
+      position: absolute;
+      top: 2rem;
+      right: 1rem;
+      //   width: 3rem;
+      //   height: 2.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      color: #2b5f4e;
+      gap: 1rem;
+      transition: color 100ms ease, background-color 300ms ease !important;
+      &:hover {
+        background-color: #1c3f34;
+        color: #fff;
+      }
+      p {
+        display: none;
+      }
+    }
+    .name-box {
+      text-overflow: ellipsis; /* Display ellipsis (...) when text overflows */
+      overflow: hidden;
+      width: 100%;
+      @include flex-row-center;
+      p {
+        font-size: 2.4rem;
+        font-family: "Tai Heritage Pro", serif;
+        white-space: nowrap; /* Prevent text from wrapping along whitespace */
+        justify-content: flex-start;
+        text-overflow: ellipsis; /* Display ellipsis (...) when text overflows */
+        overflow: hidden;
+        // width: fit-content;
+      }
+    }
+  }
+  .options-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    gap: 0.4rem;
+    padding-inline: 1rem;
+    transition: 500ms ease;
+    .nav-item {
+      @include flex-col-center;
+      padding: 0.4rem;
+      color: #fc642d;
+      position: relative;
+      transition: 500ms ease;
+      &.active::after {
+        width: 100%;
+      }
+      &.active {
+        color: #1c3f34;
+      }
+      &:hover::after {
+        width: 100%;
+      }
+      &::after {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background-color: #1c3f34;
+        transition: 200ms ease;
+      }
+      //   border: 1px solid blue;
+      cursor: pointer;
+      gap: 0.2rem;
+      p {
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      fa-icon {
+        @include flex-col-center;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .options {
+    padding: 2rem 4rem;
+    padding-bottom: 8rem;
+    .card-block {
+      @include flex-col-center;
+      gap: 2rem;
+      .btn-box {
+        @include flex-row-center;
+        button {
+          padding: 0.6rem 2rem;
+          background-color: #1c3f34;
+          color: #ffffff;
+          border: none;
+          border-radius: 2rem;
+          font-size: 1.2rem;
+          cursor: pointer;
+          &:hover {
+            background-color: #2b5f4e;
+          }
+        }
+      }
+      .block-details {
+        @include flex-col-center;
+        text-align: center;
+        gap: 0.8rem;
+        h2 {
+          font-weight: 500;
+        }
+        p {
+          font-size: 0.85rem;
+        }
+      }
+    }
+    .new-card {
+      padding: 1rem;
+      @include flex-col-center;
+      gap: 1rem;
+      color: #fc642d;
+      background-color: #fff5ea;
+      border-radius: 0.6rem;
+      height: 18rem;
+      cursor: pointer;
+      p {
+        font-size: 0.9rem;
+      }
+      fa-icon {
+        border: #fc642d 2px solid;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        @include flex-row-center;
+      }
+    }
+  }
+}
+@include large-screen {
+  .profile-block {
+    padding-inline: 2rem;
+    .profile-box {
+      flex-direction: row !important;
+      justify-content: flex-start !important;
+      .gear {
+        border: 1px solid #1c3f34;
+        p {
+          display: block !important;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+@include huge-screen {
+  .profile-block {
+    padding-inline: 14rem;
+    .profile-box {
+      flex-direction: row !important;
+      justify-content: flex-start !important;
+      .gear {
+        border: 1px solid #1c3f34;
+        p {
+          display: block !important;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}

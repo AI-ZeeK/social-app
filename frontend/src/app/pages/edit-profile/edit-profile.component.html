@@ -1,0 +1,269 @@
+<app-header></app-header>
+<main class="main-block">
+  <div class="edit-block">
+    <div class="head-box">
+      <h1>edit profile</h1>
+    </div>
+    <div class="edit-box">
+      <div class="profile-block">
+        <div class="profile-image">
+          <span>
+            {{ paid.slice(0, 1) }}
+          </span>
+        </div>
+        <div class="profile-details">
+          <h3>Upload profile picture</h3>
+          <p>
+            Permitted image formats are .jpg, .jpeg, .gif and .png. The minimum
+            image resolution is 300px x 300px. The image must have an aspect
+            ratio of 1:1.
+          </p>
+        </div>
+      </div>
+      <div class="form-box">
+        <div class="form-control">
+          <label for=""> SURNAME <span>*</span> </label>
+          <input type="text" />
+          <small>A username is required</small>
+        </div>
+        <div class="form-control">
+          <label for=""> SITE </label>
+          <p>Please start with "http://" or "https://".</p>
+          <input type="text" />
+          <small>
+            This website does not appear to be valid. Please make sure it starts
+            with http(s)://.
+          </small>
+        </div>
+        <div class="form-control">
+          <label for=""> CHARACTERISTICS </label>
+          <p>
+            Add a short bio to tell the Kitchen Stories community about
+            yourself. What is your favorite meal? Why do you like cooking so
+            much? We look forward to learning more!
+          </p>
+          <textarea name="" id="" cols="30" rows="2"></textarea>
+          <div>
+            <small>/256</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="edit-block">
+    <div class="head-box">
+      <h1>update settings</h1>
+    </div>
+    <div class="edit-box">
+      <div class="tos-box">
+        <p>
+          The security of your data is important to us. Find our
+          <a routerLink=""> Terms of Service </a> and
+          <a routerLink=""> Privacy Policy</a> here.
+        </p>
+      </div>
+      <div class="form-box">
+        <div class="form-control">
+          <label for="">BIRTHDAY </label>
+          <input type="date" />
+        </div>
+        <div class="form-control">
+          <label for="">GENDER </label>
+          <select name="" id="">
+            <option value="" disabled selected>Please select an option</option>
+            <option value="">Miscellaneous</option>
+            <option value="">Feminine</option>
+            <option value="">Masculine</option>
+          </select>
+        </div>
+        <div class="form-control">
+          <label for="">E-MAIL </label>
+          <p>
+            Sorry, unfortunately you cannot change your email address here. If
+            you would like to make an adjustment, please send us a request to
+            hello@kitchenstories.com.
+          </p>
+          <input type="text" value="isaaciyaye174@gmail.com" disabled />
+        </div>
+        <div class="form-control">
+          <h1>Change Password</h1>
+          <p>Your password should contain at least 8 characters.</p>
+          <label for="">NEW PASSWORD <span>*</span> </label>
+
+          <div class="input-box">
+            <input
+              required
+              placeholder="Your Password"
+              type="{{ isPasswordShow ? 'text' : 'password' }}"
+            />
+            <div class="show-icon" (click)="showPassword()">
+              <fa-icon *ngIf="isPasswordShow" [icon]="faEye"></fa-icon>
+              <fa-icon *ngIf="!isPasswordShow" [icon]="faEyeSlash"></fa-icon>
+            </div>
+          </div>
+          <small> Your password should be at least 8 characters long. </small>
+        </div>
+        <div class="form-control">
+          <label for="">CONFIRM PASSWORD <span>*</span> </label>
+
+          <div class="input-box">
+            <input
+              required
+              placeholder="Confirm your Password"
+              type="{{ isPasswordShow ? 'text' : 'password' }}"
+            />
+            <div class="show-icon" (click)="showPassword()">
+              <fa-icon *ngIf="isPasswordShow" [icon]="faEye"></fa-icon>
+              <fa-icon *ngIf="!isPasswordShow" [icon]="faEyeSlash"></fa-icon>
+            </div>
+          </div>
+          <small> Your password should be at least 8 characters long. </small>
+          <small> The passwords do not match </small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="edit-block">
+    <div class="head-box">
+      <h1>Edit Preferences</h1>
+    </div>
+    <div class="edit-box">
+      <div class="tos-box">
+        <p>
+          Please select the correct options and click the "Save Changes" button
+          to save your changes.
+        </p>
+      </div>
+      <div class="pref">
+        <a routerLink="">Delete preferences</a>
+      </div>
+      <div class="form-box">
+        <div class="form-control">
+          <label for="">I MAINLY EAT... </label>
+          <div class="check-block">
+            <div class="check-box">
+              <input type="radio" name="rad" />
+              <p>I eat everything</p>
+            </div>
+            <div class="check-box">
+              <input type="radio" name="rad" />
+              <p>Vegetarian</p>
+            </div>
+            <div class="check-box">
+              <input type="radio" name="rad" />
+              <p>pescetarian</p>
+            </div>
+            <div class="check-box">
+              <input type="radio" name="rad" />
+              <p>Vegan</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-control">
+          <label for="">I PAY ATTENTION TO THIS IN MY DIET...</label>
+          <div class="check-block">
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>No intolerance</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Lactose free</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Gluten free</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Low carb</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-control">
+          <label for="">I PREFER TO EAT…</label>
+          <div class="check-block">
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Italian</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>German</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>French</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Indian</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Japanese</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Levantine</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Chinese</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>American</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Korean</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Thai</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Spanish</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-control">
+          <label for="">MY GOALS IN THE KITCHEN ARE... </label>
+          <div class="check-block">
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Get to know new kitchens</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>save time and money</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>let me be inspired</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Try new ingredients</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>eat healthier</p>
+            </div>
+            <div class="check-box">
+              <input type="checkbox" />
+              <p>Learn or improve new skills</p>
+            </div>
+          </div>
+        </div>
+        <div class="btn-block">
+          <button class="btn btn-fill">Save Changes</button>
+          <button class="btn btn-outline">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>
