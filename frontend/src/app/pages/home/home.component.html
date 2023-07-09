@@ -86,7 +86,7 @@
       </h2>
     </div>
     <div class="food-mix-box">
-      <div class="food-mix-details">
+      <div class="food-mix-details" (click)="handleToRecipePage()">
         <div
           class="food-mix-image"
           data-test="global-video-player-video"
@@ -113,8 +113,20 @@
             <span>13.1k</span>
           </div>
         </div>
+        <div class="dish-box">
+          <p>Oven spring vegetables with miso tahini sauce</p>
+        </div>
+        <div class="chef-profile">
+          <div class="chef-image">
+            <img
+              src="https://images.services.kitchenstories.io/D0Sspz1aqfW_bZyDAAKngUsqDDI=/64x0/filters:quality(100)/images.kitchenstories.io/userImages/52CB0BD3-350A-4010-8572-3C72252C8B24_b50c49aa.jpg"
+              alt=""
+            />
+          </div>
+          <p>Lisa Schoelzel</p>
+        </div>
       </div>
-      <div class="food-mix-details">
+      <div class="food-mix-details" (click)="handleToRecipePage()">
         <div
           class="food-mix-image"
           data-test="global-video-player-video"
@@ -137,29 +149,28 @@
             <span>13.1k</span>
           </div>
         </div>
+        <div class="dish-box">
+          <p>Neapolitan style pizza with Lisa</p>
+        </div>
+        <div class="chef-profile">
+          <div class="chef-image">
+            <img
+              src="https://images.services.kitchenstories.io/D0Sspz1aqfW_bZyDAAKngUsqDDI=/64x0/filters:quality(100)/images.kitchenstories.io/userImages/52CB0BD3-350A-4010-8572-3C72252C8B24_b50c49aa.jpg"
+              alt=""
+            />
+          </div>
+          <p>Lisa Schoelzel</p>
+        </div>
       </div>
     </div>
   </section>
-  <section class="popup-banner">
-    <div class="banner-desc">
-      <h3>
-        Take the <span>easy quiz </span> and discover more recipes you'll fall
-        in love with!
-      </h3>
-      <div class="btn-block">
-        <button class="btn">get started now</button>
-      </div>
-    </div>
-    <div class="banner-image">
-      <img src="../../../assets/profile/app-hand-phone.webp" alt="" />
-    </div>
-    <fa-icon [icon]="faXmark"></fa-icon>
-  </section>
+
+  <app-banner></app-banner>
   <section class="daily-recipe-block">
     <div class="daily-recipe-head">
       <h2>Recipe of the day</h2>
     </div>
-    <div class="daily-recipe-box">
+    <div class="daily-recipe-box" (click)="handleToRecipePage()">
       <div
         class="daily-recipe-details"
         data-test="global-video-player-video"
@@ -195,6 +206,93 @@
           />
         </div>
         <p>Marco Hartz</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="food-mix-block">
+    <div class="food-mix-head">
+      <h2>
+        Click & order: Getir will deliver all the ingredients straight to your
+        home!
+      </h2>
+    </div>
+    <div class="food-mix-box">
+      <div class="food-mix-details">
+        <div
+          class="food-mix-image"
+          data-test="global-video-player-video"
+          style="width: 100%; height: 100%"
+        >
+          <video
+            preload="auto"
+            autoplay=""
+            class="img"
+            controls=""
+            style="width: 100%; height: 100%"
+            src="blob:https://www.kitchenstories.com/5921a4e3-90a1-4742-a714-a0f28b780763"
+          ></video>
+          <div class="timing-details">
+            <div class="details-box">
+              <p>15 min.</p>
+            </div>
+            <div class="details-box">
+              <p>Vegan</p>
+            </div>
+          </div>
+          <div class="rating-details">
+            <span> <fa-icon [icon]="faHeart"></fa-icon> </span>
+            <span>13.1k</span>
+          </div>
+        </div>
+        <div class="dish-box">
+          <p>Mango and avocado salad</p>
+        </div>
+        <div class="chef-profile">
+          <div class="chef-image">
+            <img
+              src="https://images.services.kitchenstories.io/n5Y1hejxGtMCzb5go0yaW55YQjE=/64x0/filters:quality(100)/images.kitchenstories.io/userImages/ks-symbol-bg--800_067442e0.jpg"
+              alt=""
+            />
+          </div>
+          <p>team</p>
+        </div>
+      </div>
+      <div class="food-mix-details">
+        <div
+          class="food-mix-image"
+          data-test="global-video-player-video"
+          style="width: 100%; height: 100%"
+        >
+          <img
+            src="https://images.services.kitchenstories.io/dednGLra_WL4Do2urPaYVcUaPWs=/750x0/filters:quality(85)/images.kitchenstories.io/recipeImages/11_09_QuickCheesecakeInAGlass_titlePicture.jpg"
+            alt=""
+          />
+          <div class="timing-details">
+            <div class="details-box">
+              <p>20 min.</p>
+            </div>
+            <div class="details-box">
+              <p>Vegan</p>
+            </div>
+          </div>
+          <div class="rating-details">
+            <span> <fa-icon [icon]="faHeart"></fa-icon> </span>
+            <span>13.1k</span>
+          </div>
+        </div>
+        <div class="dish-box">
+          <p>Fast cheesecake in a glass</p>
+        </div>
+        <div class="chef-profile">
+          <div class="chef-image">
+            <img
+              src="https://images.services.kitchenstories.io/n5Y1hejxGtMCzb5go0yaW55YQjE=/64x0/filters:quality(100)/images.kitchenstories.io/userImages/ks-symbol-bg--800_067442e0.jpg"
+              alt=""
+            />
+          </div>
+          <p>team</p>
+        </div>
       </div>
     </div>
   </section>

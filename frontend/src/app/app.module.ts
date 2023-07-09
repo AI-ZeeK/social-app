@@ -30,6 +30,8 @@ import {
   SocialLoginModule,
 } from 'angularx-social-login';
 import { environment } from 'src/environments/environment.dev';
+import { RecipeDetailsComponent } from './pages/recipe-details/recipe-details.component';
+import { BannerComponent } from './components/banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { environment } from 'src/environments/environment.dev';
     ProfileComponent,
     EditProfileComponent,
     ModalComponent,
+    RecipeDetailsComponent,
+    BannerComponent,
   ],
   imports: [
     BrowserModule,

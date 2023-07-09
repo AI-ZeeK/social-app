@@ -913,6 +913,7 @@ header {
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        gap: 2rem;
 
         .search-box {
           display: flex;
@@ -923,6 +924,7 @@ header {
           background-color: #fff;
           border: 1px solid #d1d1d1;
           color: #3d3d3d;
+          width: 100%;
           min-width: 14rem;
           border-radius: 0.4rem;
           cursor: pointer;

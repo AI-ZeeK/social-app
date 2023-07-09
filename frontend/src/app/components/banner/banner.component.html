@@ -1,0 +1,15 @@
+<section *ngIf="popupBanner$ | async" class="popup-banner">
+  <div class="banner-desc">
+    <h3>
+      Take the <span>easy quiz </span> and discover more recipes you'll fall in
+      love with!
+    </h3>
+    <div class="btn-block">
+      <button class="btn">get started now</button>
+    </div>
+  </div>
+  <div class="banner-image">
+    <img src="../../../assets/profile/app-hand-phone.webp" alt="" />
+  </div>
+  <fa-icon (click)="closeBanner()" [icon]="faXmark"></fa-icon>
+</section>

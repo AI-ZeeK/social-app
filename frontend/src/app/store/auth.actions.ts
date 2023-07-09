@@ -16,6 +16,9 @@ export class CloseNav {
 export class CloseModal {
   static readonly type = '[MODAL] close modal';
 }
+export class CloseBanner {
+  static readonly type = '[BANNER] close modal';
+}
 export class OpenModal {
   static readonly type = '[MODAL] open modal';
 }
@@ -41,6 +44,7 @@ interface AppInitial {
   openNav: boolean;
   isModalOpen: boolean;
   profOptionsNav: ProfOptionsNav[];
+  popupBanner: boolean;
 }
 
 @State<AppInitial>({
@@ -50,6 +54,7 @@ interface AppInitial {
     openNav: false,
     isModalOpen: false,
     profOptionsNav: [...profOptionsNav],
+    popupBanner: true,
   },
 })
 @Injectable()
@@ -59,6 +64,10 @@ export class AppState {
   @Selector()
   static getNavData(state: AppInitial): NavType[] {
     return state.navData;
+  }
+  @Selector()
+  static getPopupBanner(state: AppInitial): boolean {
+    return state.popupBanner;
   }
   @Selector()
   static getNavState(state: AppInitial): boolean {
@@ -91,6 +100,12 @@ export class AppState {
   closeModal({ patchState }: StateContext<AppInitial>) {
     patchState({
       isModalOpen: false,
+    });
+  }
+  @Action(CloseBanner)
+  closeBanner({ patchState }: StateContext<AppInitial>) {
+    patchState({
+      popupBanner: false,
     });
   }
   @Action(OpenModal)

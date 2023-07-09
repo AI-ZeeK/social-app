@@ -212,77 +212,77 @@
     }
   }
 }
-.popup-banner {
-  padding-top: 2rem;
-  padding-inline: 2rem;
-  display: grid;
-  grid-template-columns: 3fr 1.5fr;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(255 247 237);
-  position: relative;
-  max-width: 55rem;
-  gap: 1rem;
-  fa-icon {
-    font-size: 1.8rem;
-    position: absolute;
-    padding: 0.8rem;
-    top: 0;
-    right: 0.4rem;
-  }
-  .banner-image {
-    align-self: flex-end;
-    // width: 10rem;
-    // min-width: 10rem;
-    // height: 10rem;
-    width: 100%;
-    height: 100%;
-    max-height: 12rem;
-    // border: 1px solid red;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: bottom;
-    }
-  }
-  .banner-desc {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.4rem;
-    padding: 1rem 0 1rem;
-    h3 {
-      font-weight: 500;
-      font-size: 1.4rem;
-    }
-    .btn-block {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      flex-direction: column;
-      .btn {
-        padding: 0.8rem 1.2rem;
-        border-radius: 2rem;
-        font-size: 0.9rem;
-        border: none;
-        cursor: pointer;
-        background: #1c3f34;
-        color: #ffffff;
-        text-decoration: none;
-        transition: 50ms ease-in;
-        display: flex;
-        justify-content: center;
+// .popup-banner {
+//   padding-top: 2rem;
+//   padding-inline: 2rem;
+//   display: grid;
+//   grid-template-columns: 3fr 1.5fr;
+//   justify-content: space-between;
+//   align-items: center;
+//   background-color: rgb(255 247 237);
+//   position: relative;
+//   max-width: 55rem;
+//   gap: 1rem;
+//   fa-icon {
+//     font-size: 1.8rem;
+//     position: absolute;
+//     padding: 0.8rem;
+//     top: 0;
+//     right: 0.4rem;
+//   }
+//   .banner-image {
+//     align-self: flex-end;
+//     // width: 10rem;
+//     // min-width: 10rem;
+//     // height: 10rem;
+//     width: 100%;
+//     height: 100%;
+//     max-height: 12rem;
+//     // border: 1px solid red;
+//     img {
+//       width: 100%;
+//       height: 100%;
+//       object-fit: contain;
+//       object-position: bottom;
+//     }
+//   }
+//   .banner-desc {
+//     display: flex;
+//     justify-content: center;
+//     align-items: flex-start;
+//     flex-direction: column;
+//     gap: 0.4rem;
+//     padding: 1rem 0 1rem;
+//     h3 {
+//       font-weight: 500;
+//       font-size: 1.4rem;
+//     }
+//     .btn-block {
+//       display: flex;
+//       justify-content: center;
+//       align-items: flex-start;
+//       flex-direction: column;
+//       .btn {
+//         padding: 0.8rem 1.2rem;
+//         border-radius: 2rem;
+//         font-size: 0.9rem;
+//         border: none;
+//         cursor: pointer;
+//         background: #1c3f34;
+//         color: #ffffff;
+//         text-decoration: none;
+//         transition: 50ms ease-in;
+//         display: flex;
+//         justify-content: center;
 
-        &:hover {
-          background: #235341;
-          color: #ffffff;
-        }
-      }
-    }
-  }
-}
+//         &:hover {
+//           background: #235341;
+//           color: #ffffff;
+//         }
+//       }
+//     }
+//   }
+// }
 
 .food-mix-block,
 .daily-recipe-block {
@@ -306,15 +306,19 @@
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     .food-mix-details {
-      border-radius: 1rem;
-      overflow: hidden;
-      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+
       &:hover .food-mix-image img,
       &:hover .food-mix-image .img {
         scale: 1.1;
       }
       .food-mix-image {
         position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        cursor: pointer;
 
         .rating-details {
           position: absolute;
@@ -365,6 +369,30 @@
             object-fit: cover;
           }
         }
+      }
+      .chef-profile {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.4rem;
+        .chef-image {
+          width: 2rem;
+          height: 2rem;
+          overflow: hidden;
+          border-radius: 50%;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        p {
+          font-size: 0.8rem;
+          color: #fc642d;
+        }
+      }
+      .dish-box {
+        font-size: 0.9rem;
       }
     }
   }
@@ -553,14 +581,19 @@
       }
     }
   }
+  .food-mix-block {
+    .food-mix-box {
+      grid-template-columns: 1fr !important;
+      .food-mix-details {
+        min-height: 14rem;
+      }
+    }
+  }
   .search-options {
     display: none !important;
   }
 
   .recipe-search {
     width: 20rem;
-  }
-  .popup-banner {
-    grid-template-columns: 1fr !important;
   }
 }

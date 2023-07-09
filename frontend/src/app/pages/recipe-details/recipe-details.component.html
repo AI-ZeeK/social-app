@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<main>
+  <section class="routes-details">
+    {{ productId }}
+  </section>
+  <section class="hero-section">
+    <div class="hero-image">
+      <img
+        src="https://images.services.kitchenstories.io/b6pIUMUCEjPH0QyRSsYQJxdZodQ=/1080x0/filters:quality(85)/images.kitchenstories.io/wagtailOriginalImages/R2391-photo-final-1.jpg"
+        alt=""
+      />
+    </div>
+    <div class="hero-details">
+      <a routerLink="#overview">overview</a>
+      <a routerLink="#ingredients">ingredients</a>
+      <a routerLink="#steps">steps</a>
+      <a routerLink="#comments">comments(24)</a>
+    </div>
+  </section>
+  <section class="major-block">
+    <div class="major-box">
+      <div class="major-head">
+        <h3>Gado-Gado (Indonesian lukewarm salad)</h3>
+      </div>
+      <div class="ratings-box">
+        <span>
+          <fa-icon [icon]="faStarSol"></fa-icon>
+          <fa-icon [icon]="faStarSol"></fa-icon>
+          <fa-icon [icon]="faStarSol"></fa-icon>
+          <fa-icon [icon]="faStarSol"></fa-icon>
+          <fa-icon [icon]="faStarSol"></fa-icon>
+        </span>
+        <p>14 reviews</p>
+      </div>
+      <div class="options">
+        <div class="option">
+          <fa-icon [icon]="faHeart"></fa-icon>
+          <p>5.2k</p>
+        </div>
+        <div class="option">
+          <fa-icon [icon]="faBookmark"></fa-icon>
+          <p>Save on computer</p>
+        </div>
+        <div class="option">
+          <fa-icon [icon]="faShareNodes"></fa-icon>
+          <p>Split</p>
+        </div>
+        <div class="option">
+          <fa-icon [icon]="faMobile"></fa-icon>
+          <p>Open app</p>
+        </div>
+      </div>
+      <div class="line-through"></div>
+    </div>
+    <div></div>
+  </section>
+  <app-banner></app-banner>
+</main>
+<app-footer></app-footer>
