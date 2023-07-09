@@ -23,12 +23,7 @@ import { ButtonModule } from 'primeng/button';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { GoogleAuthService } from './services/google-auth.service';
-import {
-  GoogleLoginProvider,
-  SocialAuthService,
-  SocialAuthServiceConfig,
-  SocialLoginModule,
-} from 'angularx-social-login';
+
 import { environment } from 'src/environments/environment.dev';
 import { RecipeDetailsComponent } from './pages/recipe-details/recipe-details.component';
 import { BannerComponent } from './components/banner/banner.component';
@@ -60,24 +55,8 @@ import { BannerComponent } from './components/banner/banner.component';
     // AlertModule,
     ButtonModule,
     AvatarModule,
-    SocialLoginModule,
   ],
-  providers: [
-    GoogleAuthService,
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(`${environment}`),
-          },
-        ],
-      } as SocialAuthServiceConfig,
-    },
-    SocialAuthService,
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
