@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
-import { GoogleAuthService } from 'src/app/services/google-auth.service';
 
 @Component({
   selector: 'app-login',

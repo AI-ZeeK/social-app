@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxsModule } from '@ngxs/store';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppState } from './store/auth.actions';
-import { OutsideClickDirective } from './outside-click.directive';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { OneComponent } from './components/svg/one/one.component';
@@ -22,7 +22,6 @@ import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { GoogleAuthService } from './services/google-auth.service';
 
 import { environment } from 'src/environments/environment.dev';
 import { RecipeDetailsComponent } from './pages/recipe-details/recipe-details.component';
@@ -34,7 +33,6 @@ import { BannerComponent } from './components/banner/banner.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    OutsideClickDirective,
     LoginComponent,
     RegisterComponent,
     OneComponent,
@@ -53,6 +51,7 @@ import { BannerComponent } from './components/banner/banner.component';
     NgxsModule.forRoot([AppState]),
     FormsModule,
     // AlertModule,
+    RouterModule.forRoot([]),
     ButtonModule,
     AvatarModule,
   ],
